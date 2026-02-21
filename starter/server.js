@@ -24,7 +24,7 @@ const server = http.createServer((req, res) => {
         // Create a /api/time endpoint that returns current date/time as JSON
         // Uncomment and complete the code below:
         
-        /*
+    
         if (req.url === '/api/time' && req.method === 'GET') {
             const currentDateTime = new Date().toISOString();
             res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -34,7 +34,7 @@ const server = http.createServer((req, res) => {
             }));
             return;
         }
-        */
+    
 
 
         // ========================================
@@ -51,7 +51,13 @@ const server = http.createServer((req, res) => {
         // TODO: Add 'else if' for '/about' -> 'about.html'
         // Example: else if (req.url === '/about') { filePath = path.join(PUBLIC_DIR, 'about.html'); }
         
-        
+        else if (req.url === '/about') {
+            filePath = path.join(PUBLIC_DIR, 'about.html');
+        }
+
+        else if (req.url === '/contact') {
+            filePath = path.join(PUBLIC_DIR, 'contact.html');
+        }
         // TODO: Add 'else if' for '/contact' -> 'contact.html'
         
         
@@ -61,7 +67,7 @@ const server = http.createServer((req, res) => {
         // Handle requests for CSS files from /styles/ folder
         // Uncomment and complete the security check:
         
-        /*
+
         else if (req.url.startsWith('/styles/')) {
             filePath = path.join(PUBLIC_DIR, req.url);
             
@@ -72,7 +78,7 @@ const server = http.createServer((req, res) => {
                 return;
             }
         }
-        */
+    
         else {
             // No route matched -> 404
             handle404(res);
@@ -134,7 +140,7 @@ function handle404(res) {
     // If failed: Send 404 status with plain text "404 - Page Not Found"
     
     // Example structure:
-    /*
+
     fs.readFile(notFoundPath, (err, content) => {
         if (err) {
             res.writeHead(404, { 'Content-Type': 'text/plain' });
@@ -144,7 +150,7 @@ function handle404(res) {
             res.end(content, 'utf-8');
         }
     });
-    */
+    
 }
 
 // Function to handle 500 errors (Server Error)
@@ -174,10 +180,11 @@ server.listen(PORT, () => {
     
     
     // Bonus: You can also log the available routes for better user experience
-    /*
+    
     console.log('Available routes:');
     console.log('  GET /              -> index.html');
     console.log('  GET /about         -> about.html');
     console.log('  GET /contact       -> contact.html');
-    */
+    console.log('  GET /api/time      -> Current time in JSON');
+    
 });
