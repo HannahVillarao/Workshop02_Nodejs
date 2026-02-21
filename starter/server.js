@@ -176,11 +176,11 @@ function handleServerError(res, error) {
 // Start listening for requests on PORT 3000
 server.listen(PORT, () => {
     // TODO: Log a message to indicate the server is running
-    // Example: console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on http://localhost:${PORT}`);
     
     
     // Bonus: You can also log the available routes for better user experience
-    
+
     console.log('Available routes:');
     console.log('  GET /              -> index.html');
     console.log('  GET /about         -> about.html');
